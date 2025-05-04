@@ -1,5 +1,10 @@
 package com.ing.zoo;
 
+import Interfaces.Animal;
+import Interfaces.Carnivore;
+import Interfaces.Herbivore;
+import Interfaces.TrickPerformer;
+
 import java.util.Scanner;
 
 public class Zoo {
@@ -11,28 +16,72 @@ public class Zoo {
         commands[2] = "give meat";
         commands[3] = "perform trick";
 
-        Lion henk = new Lion();
-        henk.name = "henk";
-        Hippo elsa = new Hippo();
-        elsa.name = "elsa";
-        Pig dora = new Pig();
-        dora.name = "dora";
-        Tiger wally = new Tiger();
-        wally.name = "wally";
-        Zebra marty = new Zebra();
-        marty.name = "marty";
+        Animal[] animals = new Animal[]{
+                new Lion() {{name = "henk";}},
+                new Hippo() {{name = "elsa";}},
+                new Pig() {{name = "dora";}},
+                new Tiger() {{name="wally";}},
+                new Zebra() {{name="marty";}},
+                new Elephant() {{name="debby";}},
+                new Sloth() {{name="flash";}}
+        };
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Voer uw command in: ");
 
-        String input = scanner.nextLine();
-        if(input.equals(commands[0] + " henk"))
+        String input = scanner.nextLine().toLowerCase();
+
+        if(input.startsWith(commands[0]))
         {
-            henk.sayHello();
-        }
-        else
+            if(input.equals(commands[0]))
+            {
+                for(Animal a : animals)
+                {
+                    a.sayHello();
+                }
+            } else
+            {
+                String animalName = input.substring(6);
+                for(Animal a : animals)
+                {
+                    if(a.getName().equals(animalName))
+                    {
+                        a.sayHello();
+                        return;
+                    }
+                }
+                System.out.println("We don't have this animal in this zoo \uD83D\uDE2D");
+            }
+        } else if(input.equals(commands[1]))
         {
-            System.out.println("Unknown command: " + input);
+            for(Animal a : animals)
+            {
+                if(a instanceof Herbivore)
+                {
+                    ((Herbivore) a).eatLeaves();
+                }
+            }
+        } else if(input.equals(commands[2]))
+        {
+            for(Animal a : animals)
+            {
+                if(a instanceof Carnivore)
+                {
+                    ((Carnivore) a).eatMeat();
+                }
+            }
+        } else if(input.equals(commands[3]))
+        {
+            for(Animal a : animals)
+            {
+                if(a instanceof TrickPerformer)
+                {
+                    ((TrickPerformer) a).performTrick();
+                }
+            }
+        } else
+        {
+            System.out.println("Unknown command");
         }
     }
 }

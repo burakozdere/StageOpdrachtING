@@ -1,35 +1,42 @@
 package com.ing.zoo;
 
+import Interfaces.*;
+
 import java.util.Random;
 
-public class Pig {
+public class Pig implements Animal, Carnivore, Herbivore, TrickPerformer {
     public String name;
     public String helloText;
     public String eatText;
     public String trick;
 
-    public Pig()
-    {
+    @Override
+    public String getName() {
+        return name;
     }
 
+    @Override
     public void sayHello()
     {
-        helloText = "splash";
+        helloText = "Hello oink";
         System.out.println(helloText);
     }
 
+    @Override
     public void eatLeaves()
     {
         eatText = "munch munch oink";
         System.out.println(eatText);
     }
 
+    @Override
     public void eatMeat()
     {
         eatText = "nomnomnom oink thx";
         System.out.println(eatText);
     }
 
+    @Override
     public void performTrick()
     {
         Random random = new Random();

@@ -3,10 +3,10 @@ package com.ing.zoo;
 import Interfaces.Animal;
 import Interfaces.Herbivore;
 
-public class Zebra implements Animal, Herbivore {
+public class Sloth implements Animal, Herbivore {
     public String name;
-    public String helloText;
     public String eatText;
+    public String helloText;
 
     @Override
     public String getName(){
@@ -14,16 +14,14 @@ public class Zebra implements Animal, Herbivore {
     }
 
     @Override
-    public void sayHello()
-    {
-        helloText = "zebra zebra";
+    public void sayHello(){
+        helloText = "heeeeeelllllooooooo";
         System.out.println(helloText);
     }
 
     @Override
-    public void eatLeaves()
-    {
-        eatText = "munch munch zank yee bra";
+    public void eatLeaves(){
+        eatText = "munch munch thaaaaaannnnkksss brooooooo";
         System.out.println(eatText);
     }
 }

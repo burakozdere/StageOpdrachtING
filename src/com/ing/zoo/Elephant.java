@@ -1,15 +1,15 @@
 package com.ing.zoo;
 
 import Interfaces.Animal;
-import Interfaces.Carnivore;
+import Interfaces.Herbivore;
 import Interfaces.TrickPerformer;
 
 import java.util.Random;
 
-public class Tiger implements Animal, Carnivore, TrickPerformer {
+public class Elephant implements Animal, Herbivore, TrickPerformer {
     public String name;
-    public String helloText;
     public String eatText;
+    public String helloText;
     public String trick;
 
     @Override
@@ -18,31 +18,25 @@ public class Tiger implements Animal, Carnivore, TrickPerformer {
     }
 
     @Override
-    public void sayHello()
-    {
-        helloText = "rraaarww";
+    public void sayHello(){
+        helloText = "toooot";
         System.out.println(helloText);
     }
 
     @Override
-    public void eatMeat()
-    {
-        eatText = "nomnomnom wubalubadubdub";
+    public void eatLeaves(){
+        eatText = "crunch crunch *trumpet noises*";
         System.out.println(eatText);
     }
 
     @Override
-    public void performTrick()
-    {
+    public void performTrick(){
         Random random = new Random();
         int rnd = random.nextInt(2);
-        if(rnd == 0)
-        {
-            trick = "jumps in tree";
-        }
-        else
-        {
-            trick = "scratches ears";
+        if(rnd == 0) {
+            trick = "balances a ball on her trunk";
+        } else {
+            trick = "balances on 1 foot";
         }
         System.out.println(trick);
     }
